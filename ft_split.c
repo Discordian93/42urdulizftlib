@@ -24,26 +24,17 @@ static int	word_count(char const *s, char c)
 	return (wcount);
 }
 
-static int	separator_strlen(char const *s, char c)
-{
-	int	len;
-
-	len = 0;
-	while (*s != c && *s != '\0')
-	{
-		len++;
-		s++;
-	}
-	return (len);
-}
-
 static char	*extract_word(char const *s, char c)
 {
 	int		len;
 	char	*word;
 	char	*word_address;
 
-	len = separator_strlen(s, c);
+	len = 0;
+	while (s[len] != c && s[len] != '\0')
+	{
+		len++;
+	}
 	word = (char *)malloc(sizeof(char) * (len +1));
 	word_address = word;
 	if (word != NULL)
@@ -73,15 +64,23 @@ static char const	*next_word_start(char const *s, char c)
 	return (s);
 }
 
+static void	free_words(char **words, int word_ind)
+{
+	while (word_ind >= 0)
+	{
+		free(words[word_ind]);
+		word_ind--;
+	}
+	free(words);
+}
+
 char	**ft_split(char const *s, char c)
 {
-	int		wc;
-	char	**words;
 	int		word_ind;
+	char	**words;
 
+	words = malloc(sizeof(char *) * (word_count(s, c) + 1));
 	word_ind = 0;
-	wc = word_count(s, c);
-	words = malloc(sizeof(char*) * (wc + 1));
 	if (words != NULL)
 	{
 		if (*s == c)
@@ -93,12 +92,7 @@ char	**ft_split(char const *s, char c)
 			words[word_ind] = extract_word(s, c);
 			if (words[word_ind] == NULL)
 			{
-				while (word_ind >= 0)
-				{
-					free(words[word_ind]);
-					word_ind--;
-				}
-				free(words);
+				free_words(words, word_ind);
 				return (NULL);
 			}
 			s = next_word_start(s, c);
