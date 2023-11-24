@@ -13,13 +13,13 @@
 #include "libft.h"
 #include <stdlib.h>
 
-size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	int		appendsize;
-	size_t		returnvalue;
+	size_t	returnvalue;
 	char	*appendpos;
 
-	appendsize = dstsize - ft_strlen(dst) - 1;
+	appendsize = size - ft_strlen(dst) - 1;
 	returnvalue = ft_strlen(dst) + ft_strlen(src);
 	if (appendsize < 0)
 	{
@@ -36,3 +36,20 @@ size_t	ft_strlcat(char * restrict dst, const char * restrict src, size_t dstsize
 	}
 	return (returnvalue);
 }
+
+/* #include <stdio.h>
+
+int main()
+{
+	char dst[50] = "Hello";
+	const char *src = " World!";
+	size_t size = sizeof(dst);
+
+	printf("Before ft_strlcat: %s\n", dst);
+	size_t ret = ft_strlcat(dst, src, size);
+	printf("After ft_strlcat: %s\n", dst);
+	printf("Returned value: %zu\n", ret);
+
+	return 0;
+}
+ */

@@ -15,20 +15,20 @@
 
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	if(ft_strlen(needle) == 0)
+	if (ft_strlen(needle) == 0)
 	{
 		return ((char *)haystack);
 	}
 	else
 	{
-		while(*haystack != '\0' && len-- >= (unsigned int)ft_strlen(needle))
+		while (*haystack != '\0' && len-- >= (unsigned int)ft_strlen(needle))
 		{
-			if(ft_strncmp(haystack, needle, ft_strlen(needle)) == 0)
+			if (ft_strncmp(haystack, needle, ft_strlen(needle)) == 0)
 			{
 				return ((char *)haystack);
 			}
 			haystack++;
 		}
-		return 0;
+		return (NULL);
 	}
 }
