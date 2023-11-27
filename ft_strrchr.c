@@ -13,9 +13,11 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	unsigned char uc = (unsigned char)c;
-	char *last_occurrence = NULL;
+	unsigned char	uc;
+	char			*last_occurrence;
 
+	uc = (unsigned char)c;
+	last_occurrence = NULL;
 	while (*s)
 	{
 		if (*s == uc)
@@ -28,5 +30,5 @@ char	*ft_strrchr(const char *s, int c)
 	{
 		last_occurrence = (char *)s;
 	}
-	return last_occurrence;
+	return (last_occurrence);
 }

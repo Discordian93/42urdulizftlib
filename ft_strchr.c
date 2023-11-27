@@ -12,8 +12,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char uc = (unsigned char)c;
+	unsigned char	uc;
 
+	uc = (unsigned char)c;
 	while (*s != '\0')
 	{
 		if (*s == uc)
@@ -28,7 +29,6 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
-
 
 /* #include <stdio.h>
 
