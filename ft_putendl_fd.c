@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_putend_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
 	size_t	len;
 

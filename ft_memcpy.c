@@ -11,19 +11,24 @@
 /* ************************************************************************** */
 #include <stdlib.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void *ft_memcpy(void *dst, const void *src, size_t len)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+    unsigned char *d;
+    unsigned char *s;
 
-	d = (unsigned char *) dst;
-	s = (unsigned char *) src;
-	while (n > 0)
-	{
-		*d = *s;
-		d++;
-		s++;
-		n--;
-	}
-	return (dst);
+    if (dst == NULL && src == NULL && len == 0)
+        return (NULL);
+
+    d = (unsigned char *) dst;
+    s = (unsigned char *) src;
+
+    while(len > 0)
+    {
+        *d = *s;
+        d++;
+        s++;
+        len--;
+    }
+    return (dst);
 }
+
