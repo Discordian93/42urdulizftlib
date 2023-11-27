@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strrchr(char *s, char c)
+char	*ft_strrchr(const char *s, char c)
 {
 	int		found;
 	char	*target;
@@ -21,9 +21,15 @@ char	*ft_strrchr(char *s, char c)
 		if (*s == c)
 		{
 			found = 1;
-			target = s;
+			target = (char *)s;
+			break ;
 		}
 		s++;
+	}
+	if (*s == c)
+	{
+		found = 1;
+		target = (char *)s;
 	}
 	if (found)
 	{

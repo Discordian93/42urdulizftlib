@@ -15,26 +15,22 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int		appendsize;
-	size_t	returnvalue;
-	char	*appendpos;
+	size_t	dstlen;
+	size_t	srclen;
+	size_t	i;
 
-	appendsize = size - ft_strlen(dst) - 1;
-	returnvalue = ft_strlen(dst) + ft_strlen(src);
-	if (appendsize < 0)
+	dstlen = ft_strlen(dst);
+	srclen = ft_strlen(src);
+	if (size <= dstlen)
+		return (size + srclen);
+	i = 0;
+	while (src[i] != '\0' && dstlen + i < size - 1)
 	{
-		return (returnvalue);
+		dst[dstlen + i] = src[i];
+		i++;
 	}
-	appendpos = dst + ft_strlen(dst);
-	while (*src != '\0' && 0 < appendsize--)
-	{
-		*appendpos++ = *src++;
-	}
-	if (appendsize >= 0)
-	{
-		*appendpos = '\0';
-	}
-	return (returnvalue);
+	dst[dstlen + i] = '\0';
+	return (dstlen + srclen);
 }
 
 /* #include <stdio.h>
