@@ -20,7 +20,8 @@ void	*ft_calloc(size_t num, size_t size)
 
 	if (num == 0 || size == 0)
 	{
-		return (NULL);
+		num = 1;
+		size = 1;
 	}
 	if (num && SIZE_MAX / num < size)
 	{

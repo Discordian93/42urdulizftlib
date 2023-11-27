@@ -31,7 +31,12 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (start > ft_strlen(s))
 	{
-		return (NULL);
+		substr = (char *)malloc(sizeof(char));
+		if (substr != NULL)
+		{
+			*substr = '\0';
+		}
+		return (substr);
 	}
 	while (start--)
 	{
