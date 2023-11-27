@@ -9,31 +9,24 @@
 /*   Updated: 2023/09/15 15:59:10 by esteizag         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
 
-char	*ft_strrchr(const char *s, char c)
+char	*ft_strrchr(const char *s, int c)
 {
-	int		found;
-	char	*target;
+	unsigned char uc = (unsigned char)c;
+	char *last_occurrence = NULL;
 
-	found = 0;
-	while (*s != '\0')
+	while (*s)
 	{
-		if (*s == c)
+		if (*s == uc)
 		{
-			found = 1;
-			target = (char *)s;
-			break ;
+			last_occurrence = (char *)s;
 		}
 		s++;
 	}
-	if (*s == c)
+	if (uc == '\0')
 	{
-		found = 1;
-		target = (char *)s;
+		last_occurrence = (char *)s;
 	}
-	if (found)
-	{
-		return (target);
-	}
-	return (0);
+	return last_occurrence;
 }

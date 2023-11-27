@@ -12,20 +12,23 @@
 
 char	*ft_strchr(const char *s, int c)
 {
+	unsigned char uc = (unsigned char)c;
+
 	while (*s != '\0')
 	{
-		if (*s == c)
+		if (*s == uc)
 		{
 			return ((char *)s);
 		}
 		s++;
 	}
-	if (*s == c)
+	if (*s == uc)
 	{
 		return ((char *)s);
 	}
 	return (0);
 }
+
 
 /* #include <stdio.h>
 
